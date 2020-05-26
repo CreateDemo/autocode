@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
-<!-- ${table.tableRemark}指定工作空间，要与接口名相同 -->
-<mapper namespace="${rootPackageName}.repository.mapper${aliasPackageName}.${table.tableName,TCaseCamle}Mapper">
-
-</mapper>
