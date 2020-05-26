@@ -1,0 +1,129 @@
+package ${rootPackageName}.repository${aliasPackageName};
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.feng.framework.api.vo.PageRequest;
+import ${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity;
+import ${rootPackageName}.entity.param${aliasPackageName}.${table.tableName,TCaseCamle}ParamEntity;
+
+import java.util.List;
+
+/**
+ * @description ${table.tableRemark} 业务层访问接口
+ * @author ${codeAuthor}
+ * @date ${dateStr}
+ */
+public interface ${table.tableName,TCaseCamle}Repository extends IService<${table.tableName,TCaseCamle}Entity> {
+
+    /**
+     * 新增
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param entity
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    boolean insert${table.tableName,TCaseCamle}Entity(${table.tableName,TCaseCamle}Entity entity);
+
+    /**
+     * 批量新增
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param entities
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    boolean insert${table.tableName,TCaseCamle}EntityBatch(List<${table.tableName,TCaseCamle}Entity> entities);
+
+    /**
+     * 根据id更新
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param entity
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    boolean update${table.tableName,TCaseCamle}EntityById(${table.tableName,TCaseCamle}Entity entity);
+
+    /**
+     * 根据id批量更新
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param entities
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    boolean update${table.tableName,TCaseCamle}EntityBatchById(List<${table.tableName,TCaseCamle}Entity> entities);
+
+    /**
+     * id逻辑删除
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param id
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    boolean delete${table.tableName,TCaseCamle}EntityById(Long id);
+
+    /**
+     * id批量逻辑删除
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param idList
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    boolean delete${table.tableName,TCaseCamle}EntityByIdList(List<Long> idList);
+
+    /**
+     * id查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param id
+     * @return ${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    ${table.tableName,TCaseCamle}Entity select${table.tableName,TCaseCamle}EntityById(Long id);
+
+    /**
+     * id列表查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param idList
+     * @return java.util.List<${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    List<${table.tableName,TCaseCamle}Entity> select${table.tableName,TCaseCamle}EntitiesById(List<Long> idList);
+
+    /**
+     * 对象查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param paramEntity
+     * @return ${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    ${table.tableName,TCaseCamle}Entity select${table.tableName,TCaseCamle}Entity(${table.tableName,TCaseCamle}ParamEntity paramEntity);
+
+    /**
+     * 批量查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param paramEntity
+     * @return java.util.List<${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    List<${table.tableName,TCaseCamle}Entity> select${table.tableName,TCaseCamle}Entities(${table.tableName,TCaseCamle}ParamEntity paramEntity);
+
+    /**
+     * 分页查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param paramEntity
+     * @param pageRequest
+     * @return com.baomidou.mybatisplus.core.metadata.IPage<${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    IPage<${table.tableName,TCaseCamle}Entity> select${table.tableName,TCaseCamle}EntitiesPage(${table.tableName,TCaseCamle}ParamEntity paramEntity, PageRequest pageRequest);
+
+}

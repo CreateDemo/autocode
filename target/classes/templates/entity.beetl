@@ -1,0 +1,53 @@
+package ${rootPackageName}.entity${aliasPackageName};
+
+import java.util.Date;
+import java.math.BigDecimal;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
+
+/**
+ * @description ${table.tableRemark} 实体类
+ * @author ${codeAuthor}
+ * @date ${dateStr}
+ */
+@Data
+@EqualsAndHashCode(callSuper = true)
+@Accessors(chain = true)
+@TableName("${table.relTableName}")
+public class ${table.tableName,TCaseCamle}Entity  {
+
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * id
+     */
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
+
+	<%for(fields in table.fieldList){%>
+	<%if(fields.field == table.id || fields.field == "created_by" || fields.field == "created_time" || fields.field == "modified_by"%>
+	  <%|| fields.field == "modified_time" || fields.field == "is_delete" || fields.field == "last_update_time"){%>
+	<%}else{%>
+	/**
+	 * ${fields.comment}
+	 */
+	@TableField("${fields.field}")
+	private ${fields.type,TConver} ${fields.field,Camle};
+	<%}%>
+	<%}%>
+
+	<%for(fields in table.fieldList){%>
+	<%if(fields.field == table.id || fields.field == "created_by" || fields.field == "created_time" || fields.field == "modified_by"%>
+    	  <%|| fields.field == "modified_time" || fields.field == "is_delete" || fields.field == "last_update_time"){%>
+    <%}else{%>
+    public static final String ${fields.field, Upcase} = "${fields.field}";
+
+    <%}%>
+	<%}%>
+
+}

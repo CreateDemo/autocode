@@ -1,0 +1,212 @@
+package ${rootPackageName}.service${aliasPackageName};
+
+import cn.hutool.core.bean.BeanUtil;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.feng.framework.api.vo.PageRequest;
+import com.feng.framework.api.vo.PageResult;
+import ${rootPackageName}.dto${aliasPackageName}.${table.tableName,TCaseCamle}Dto;
+import ${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity;
+import ${rootPackageName}.entity.param${aliasPackageName}.${table.tableName,TCaseCamle}ParamEntity;
+import ${rootPackageName}.repository${aliasPackageName}.${table.tableName,TCaseCamle}Repository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @description ${table.tableRemark} Domain业务层访问接口实现类
+ * @author ${codeAuthor}
+ * @date ${dateStr}
+ */
+@Service
+public class ${table.tableName,TCaseCamle}ServiceImpl implements ${table.tableName,TCaseCamle}Service {
+
+    @Autowired
+    private ${table.tableName,TCaseCamle}Repository ${table.tableName,Camle}Repository;
+
+    /**
+     * 新增
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param dto
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean add${table.tableName,TCaseCamle}(${table.tableName,TCaseCamle}Dto dto) {
+        ${table.tableName,TCaseCamle}Entity entity = BeanUtil.toBean(dto, ${table.tableName,TCaseCamle}Entity.class);
+        boolean flag = ${table.tableName,Camle}Repository.insert${table.tableName,TCaseCamle}Entity(entity);
+        dto.setId(entity.getId());
+        return flag;
+    }
+
+
+    /**
+     * 根据id更新
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param dto
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean modify${table.tableName,TCaseCamle}ById(${table.tableName,TCaseCamle}Dto dto) {
+        ${table.tableName,TCaseCamle}Entity entity = BeanUtil.toBean(dto, ${table.tableName,TCaseCamle}Entity.class);
+        return ${table.tableName,Camle}Repository.update${table.tableName,TCaseCamle}EntityById(entity);
+    }
+
+    /**
+     * 根据id批量更新
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param dtoList
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean modify${table.tableName,TCaseCamle}BatchById(List<${table.tableName,TCaseCamle}Dto> dtoList) {
+        List<${table.tableName,TCaseCamle}Entity> entities = new ArrayList<>();
+        for(${table.tableName,TCaseCamle}Dto dto : dtoList){
+            ${table.tableName,TCaseCamle}Entity entity = BeanUtil.toBean(dto, ${table.tableName,TCaseCamle}Entity.class);
+            entities.add(entity);
+        }
+        return ${table.tableName,Camle}Repository.update${table.tableName,TCaseCamle}EntityBatchById(entities);
+    }
+
+    /**
+     * id逻辑删除
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param id
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean delete${table.tableName,TCaseCamle}ById(Long id) {
+        return ${table.tableName,Camle}Repository.delete${table.tableName,TCaseCamle}EntityById(id);
+    }
+
+    /**
+     * id批量逻辑删除
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param idList
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean delete${table.tableName,TCaseCamle}EntityByIdList(List<Long> idList) {
+        return ${table.tableName,Camle}Repository.delete${table.tableName,TCaseCamle}EntityByIdList(idList);
+    }
+
+    /**
+     * id查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param id
+     * @return ${rootPackageName}.dto${aliasPackageName}.${table.tableName,TCaseCamle}Dto
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public ${table.tableName,TCaseCamle}Dto get${table.tableName,TCaseCamle}ById(Long id) {
+        ${table.tableName,TCaseCamle}Entity entity = ${table.tableName,Camle}Repository.select${table.tableName,TCaseCamle}EntityById(id);
+        if(entity == null){
+            return null;
+        }
+        ${table.tableName,TCaseCamle}Dto dto = BeanUtil.toBean(entity, ${table.tableName,TCaseCamle}Dto.class);
+        return dto;
+    }
+
+    /**
+     * id列表查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param idList
+     * @return java.util.List<${rootPackageName}.dto${aliasPackageName}.${table.tableName,TCaseCamle}Dto>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public List<${table.tableName,TCaseCamle}Dto> get${table.tableName,TCaseCamle}ListById(List<Long> idList) {
+        List<${table.tableName,TCaseCamle}Dto> dtoList = new ArrayList<>();
+        List<${table.tableName,TCaseCamle}Entity> entityList = ${table.tableName,Camle}Repository.select${table.tableName,TCaseCamle}EntitiesById(idList);
+        if(entityList.size() == 0){
+            return dtoList;
+        }
+        for(${table.tableName,TCaseCamle}Entity entity : entityList){
+            ${table.tableName,TCaseCamle}Dto dto = BeanUtil.toBean(entity, ${table.tableName,TCaseCamle}Dto.class);
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
+    /**
+     * 对象查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param dto
+     * @return ${rootPackageName}.dto${aliasPackageName}.${table.tableName,TCaseCamle}Dto
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public ${table.tableName,TCaseCamle}Dto get${table.tableName,TCaseCamle}(${table.tableName,TCaseCamle}Dto dto) {
+        ${table.tableName,TCaseCamle}ParamEntity paramEntity = BeanUtil.toBean(dto, ${table.tableName,TCaseCamle}ParamEntity.class);
+        ${table.tableName,TCaseCamle}Entity entity = ${table.tableName,Camle}Repository.select${table.tableName,TCaseCamle}Entity(paramEntity);
+        if(entity == null) {
+            return null;
+        }
+        ${table.tableName,TCaseCamle}Dto resultDto = BeanUtil.toBean(entity, ${table.tableName,TCaseCamle}Dto.class);
+        return resultDto;
+    }
+
+    /**
+     * 批量查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param dto
+     * @return java.util.List<${rootPackageName}.dto${aliasPackageName}.${table.tableName,TCaseCamle}Dto>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public List<${table.tableName,TCaseCamle}Dto> get${table.tableName,TCaseCamle}List(${table.tableName,TCaseCamle}Dto dto) {
+        ${table.tableName,TCaseCamle}ParamEntity paramEntity = BeanUtil.toBean(dto, ${table.tableName,TCaseCamle}ParamEntity.class);
+        List<${table.tableName,TCaseCamle}Entity> entities = ${table.tableName,Camle}Repository.select${table.tableName,TCaseCamle}Entities(paramEntity);
+        List<${table.tableName,TCaseCamle}Dto> resultDtoList = new ArrayList<>();
+        for(${table.tableName,TCaseCamle}Entity entity : entities) {
+            ${table.tableName,TCaseCamle}Dto resultDto = BeanUtil.toBean(entity, ${table.tableName,TCaseCamle}Dto.class);
+            resultDtoList.add(resultDto);
+        }
+        return resultDtoList;
+    }
+
+    /**
+     * 分页查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param dto
+     * @param pageRequest
+     * @return com.feng.framework.api.vo.PageResult<${rootPackageName}.dto${aliasPackageName}.${table.tableName,TCaseCamle}Dto>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public PageResult<${table.tableName,TCaseCamle}Dto> get${table.tableName,TCaseCamle}PageList(${table.tableName,TCaseCamle}Dto dto, PageRequest pageRequest) {
+        PageResult<${table.tableName,TCaseCamle}Dto> pageResult= new PageResult<${table.tableName,TCaseCamle}Dto>();
+        ${table.tableName,TCaseCamle}ParamEntity paramEntity = BeanUtil.toBean(dto, ${table.tableName,TCaseCamle}ParamEntity.class);
+
+        IPage<${table.tableName,TCaseCamle}Entity> page = ${table.tableName,Camle}Repository.select${table.tableName,TCaseCamle}EntitiesPage(paramEntity, pageRequest);
+        pageResult.setCount(page.getTotal());
+        pageResult.setPageCount(page.getSize());
+        List<${table.tableName,TCaseCamle}Dto> resultDtoList = new ArrayList<>();
+        pageResult.setList(resultDtoList);
+        if(page.getTotal()==0){
+            return pageResult;
+        }
+
+        for(${table.tableName,TCaseCamle}Entity entity : page.getRecords()) {
+            ${table.tableName,TCaseCamle}Dto resultDto = BeanUtil.toBean(entity, ${table.tableName,TCaseCamle}Dto.class);
+            resultDtoList.add(resultDto);
+        }
+        return pageResult;
+    }
+
+}
