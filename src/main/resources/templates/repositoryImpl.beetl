@@ -1,0 +1,206 @@
+package ${rootPackageName}.repository${aliasPackageName};
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.feng.framework.api.vo.OrderBy;
+import com.feng.framework.api.vo.PageRequest;
+import com.feng.framework.api.vo.PageResult;
+import ${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity;
+import ${rootPackageName}.entity.param${aliasPackageName}.${table.tableName,TCaseCamle}ParamEntity;
+import ${rootPackageName}.repository.mapper${aliasPackageName}.${table.tableName,TCaseCamle}Mapper;
+import org.springframework.stereotype.Repository;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+/**
+ * @description ${table.tableRemark} 业务层访问接口实现类
+ * @author ${codeAuthor}
+ * @date ${dateStr}
+ */
+@Repository
+public class ${table.tableName,TCaseCamle}RepositoryImpl  implements ${table.tableName,TCaseCamle}Repository {
+
+    @Resource
+    private ${table.tableName,TCaseCamle}Mapper ${table.tableName,Camle}Mapper;
+
+    /**
+     * 新增
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param entity
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean insert${table.tableName,TCaseCamle}Entity(${table.tableName,TCaseCamle}Entity entity){
+        return save(entity);
+    }
+
+    /**
+     * 批量新增
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param entities
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean insert${table.tableName,TCaseCamle}EntityBatch(List<${table.tableName,TCaseCamle}Entity> entities){
+        return saveBatch(entities);
+    }
+
+    /**
+     * 根据id更新
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param entity
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean update${table.tableName,TCaseCamle}EntityById(${table.tableName,TCaseCamle}Entity entity){
+        return updateById(entity);
+    }
+
+    /**
+     * 根据id批量更新
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param entities
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean update${table.tableName,TCaseCamle}EntityBatchById(List<${table.tableName,TCaseCamle}Entity> entities){
+        return updateBatchById(entities);
+    }
+
+    /**
+     * id逻辑删除
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param id
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean delete${table.tableName,TCaseCamle}EntityById(Long id){
+        return removeById(id);
+    }
+
+    /**
+     * id批量逻辑删除
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param idList
+     * @return boolean
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public boolean delete${table.tableName,TCaseCamle}EntityByIdList(List<Long> idList){
+        return removeByIds(idList);
+    }
+
+    /**
+     * id查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param id
+     * @return ${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public ${table.tableName,TCaseCamle}Entity select${table.tableName,TCaseCamle}EntityById(Long id){
+        return getById(id);
+    }
+
+    /**
+     * id列表查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param idList
+     * @return java.util.List<${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public List<${table.tableName,TCaseCamle}Entity> select${table.tableName,TCaseCamle}EntitiesById(List<Long> idList){
+        return (List<${table.tableName,TCaseCamle}Entity>)listByIds(idList);
+    }
+
+    /**
+     * 组装对象查询条件
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param paramEntity
+     * @return com.baomidou.mybatisplus.core.conditions.query.QueryWrapper<${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    private QueryWrapper<${table.tableName,TCaseCamle}Entity> buildQueryWrapper(${table.tableName,TCaseCamle}ParamEntity paramEntity) {
+        QueryWrapper<${table.tableName,TCaseCamle}Entity> queryWrapper = new QueryWrapper<>();
+        <%for(fields in table.fieldList){%>
+        <%if(fields.field != "is_delete"){%>
+        if(paramEntity.get${fields.field,TCaseCamle}() != null){
+            queryWrapper.eq(${table.tableName,TCaseCamle}Entity.${fields.field,Upcase}, paramEntity.get${fields.field,TCaseCamle}());
+        }
+        <%}%>
+        <%}%>
+        return queryWrapper;
+    }
+
+    /**
+     * 对象查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param paramEntity
+     * @return ${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public ${table.tableName,TCaseCamle}Entity select${table.tableName,TCaseCamle}Entity(${table.tableName,TCaseCamle}ParamEntity paramEntity){
+        QueryWrapper<${table.tableName,TCaseCamle}Entity> queryWrapper = buildQueryWrapper(paramEntity);
+        return getOne(queryWrapper);
+    }
+
+    /**
+     * 批量查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param paramEntity
+     * @return java.util.List<${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public List<${table.tableName,TCaseCamle}Entity> select${table.tableName,TCaseCamle}Entities(${table.tableName,TCaseCamle}ParamEntity paramEntity){
+        QueryWrapper<${table.tableName,TCaseCamle}Entity> queryWrapper = buildQueryWrapper(paramEntity);
+        queryWrapper.orderByDesc(${table.tableName,TCaseCamle}Entity.ID);
+        return list(queryWrapper);
+    }
+
+    /**
+     * 分页查询
+     * --代码生成器自动生成。若使用请删除此行注释，如果无调用则将整个方法删除，以免他人误用
+     * @param paramEntity
+     * @param pageRequest
+     * @return com.baomidou.mybatisplus.core.metadata.IPage<${rootPackageName}.entity${aliasPackageName}.${table.tableName,TCaseCamle}Entity>
+     * @author ${codeAuthor}
+     * @date ${dateStr}
+     */
+    @Override
+    public IPage<${table.tableName,TCaseCamle}Entity> select${table.tableName,TCaseCamle}EntitiesPage(${table.tableName,TCaseCamle}ParamEntity paramEntity, PageRequest pageRequest){
+        QueryWrapper<${table.tableName,TCaseCamle}Entity> queryWrapper = buildQueryWrapper(paramEntity);
+        IPage<${table.tableName,TCaseCamle}Entity> page = new Page<${table.tableName,TCaseCamle}Entity>(pageRequest.getPageNum(), pageRequest.getPageSize());
+        if(pageRequest.getOrderBySet() != null && pageRequest.getOrderBySet().size() > 0){
+            for(OrderBy orderBy : pageRequest.getOrderBySet()) {
+                if(orderBy.getOrderDirection().isAscending()){
+                    queryWrapper.orderByAsc(orderBy.getOrderPropertie());
+                } else {
+                    queryWrapper.orderByDesc(orderBy.getOrderPropertie());
+                }
+            }
+        }
+        return page(page, queryWrapper);
+    }
+
+}

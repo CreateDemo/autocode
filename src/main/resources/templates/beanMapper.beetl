@@ -1,0 +1,18 @@
+  <!-- 多表关联查询结果集-->
+  <resultMap id="BaseResultMap_${table.tableName,TCaseCamle}" type="${rootPackageName}.bo${aliasPackageName}.${table.tableName,TCaseCamle}" >
+  	<%
+	 for(fields in table.fieldList){
+	%>
+	<!-- ${fields.comment} -->
+	<%
+	if(fields.field == table.id){%>
+		<id column="${fields.field}" property="${fields.field,Camle}" jdbcType="${fields.type,Upcase}" />  
+	<%}else{%>
+		<result column="${fields.field}" property="${fields.field,Camle}" jdbcType="${fields.type,Upcase}" />  
+	<%}%>
+    <%}%>
+  </resultMap>
+  <!-- 多表关联查询--> 
+  <select id="select${table.tableName,TCaseCamle}" resultMap="BaseResultMap_${table.tableName,TCaseCamle}" parameterType="map">
+	${showsql}
+  </select>

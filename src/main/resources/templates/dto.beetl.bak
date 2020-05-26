@@ -1,0 +1,28 @@
+package ${rootPackageName}.pojo.bo${aliasPackageName};
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+import lombok.Data;
+import lombok.experimental.Accessors;
+
+ /**
+ * @description ${table.tableRemark} 实体类
+ * @author ${codeAuthor}
+ * @date ${dateStr}
+ */
+@Data
+@Accessors(chain = true)
+public class ${table.tableName,TCaseCamle}Dto {
+
+	<%
+	 for(fields in table.fieldList){
+	%>
+	/**
+	 * ${fields.comment}
+	 */
+	private ${fields.type,TConver} ${fields.field,Camle};
+	
+	<%}%>
+
+}

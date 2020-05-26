@@ -1,0 +1,2 @@
+public List<${table.tableName,TCaseCamle}> select${table.tableName,TCaseCamle}(Map<String,Object> paramMap);
+
